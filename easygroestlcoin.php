@@ -1,9 +1,9 @@
 <?php
 /*
-EasyBitcoin-PHP
+EasyGroestlcoin-PHP
 
-A simple class for making calls to Bitcoin's API using PHP.
-https://github.com/aceat64/EasyBitcoin-PHP
+A simple class for making calls to Groestlcoin's API using PHP.
+Forked from https://github.com/aceat64/EasyBitcoin-PHP
 
 ====================
 
@@ -31,39 +31,39 @@ THE SOFTWARE.
 
 ====================
 
-// Initialize Bitcoin connection/object
-$bitcoin = new Bitcoin('username','password');
+// Initialize groestlcoin connection/object
+$groestlcoin = new Groestlcoin('username','password');
 
 // Optionally, you can specify a host and port.
-$bitcoin = new Bitcoin('username','password','host','port');
+$groestlcoin = new Groestlcoin('username','password','host','port');
 // Defaults are:
 //	host = localhost
-//	port = 8332
+//	port = 1441
 //	proto = http
 
 // If you wish to make an SSL connection you can set an optional CA certificate or leave blank
 // This will set the protocol to HTTPS and some CURL flags
-$bitcoin->setSSL('/full/path/to/mycertificate.cert');
+$groestlcoin->setSSL('/full/path/to/mycertificate.cert');
 
-// Make calls to bitcoind as methods for your object. Responses are returned as an array.
+// Make calls to groestlcoind as methods for your object. Responses are returned as an array.
 // Examples:
-$bitcoin->getinfo();
-$bitcoin->getrawtransaction('0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098',1);
-$bitcoin->getblock('000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f');
+$groestlcoin->getinfo();
+$groestlcoin->getrawtransaction('cf72b5842b3528fd7f3065ba9e93c50a62e84f42b3b7b7a351d910b5e353b662',1);
+$groestlcoin->getblock('00000ac5927c594d49cc0bdb81759d0da8297eb614683d3acb62f0703b639023');
 
 // The full response (not usually needed) is stored in $this->response while the raw JSON is stored in $this->raw_response
 
 // When a call fails for any reason, it will return FALSE and put the error message in $this->error
 // Example:
-echo $bitcoin->error;
+echo $groestlcoin->error;
 
 // The HTTP status code can be found in $this->status and will either be a valid HTTP status code or will be 0 if cURL was unable to connect.
 // Example:
-echo $bitcoin->status;
+echo $groestlcoin->status;
 
 */
 
-class Bitcoin {
+class Groestlcoin {
     // Configuration options
     private $username;
     private $password;
@@ -89,7 +89,7 @@ class Bitcoin {
      * @param string $proto
      * @param string $url
      */
-    function __construct($username, $password, $host = 'localhost', $port = 8332, $url = null) {
+    function __construct($username, $password, $host = 'localhost', $port = 1441, $url = null) {
         $this->username      = $username;
         $this->password      = $password;
         $this->host          = $host;
